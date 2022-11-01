@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
-    "deploy": "yarn build && yarn gh-pages -d out",
+    "build": "next build && next export  && touch ./out/.nojekyll",
+    "deploy": "yarn build && touch ./out/.nojekyll && gh-pages -d out -t true",
     "start": "next start",
     "lint": "next lint"
   },
