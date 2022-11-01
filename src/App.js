@@ -18,30 +18,6 @@ const colors = colors1.map((color,index)=>{
   }
 })
 
-const style = {
-
-  searchBox: { // To change search box element look
-  width: "75%",
-	border: "none",
-	"font-size": "10px",
-	"min-height": "50px"
-  },
-  inputField: { // To change input field position or margin
-      margin: "5px",
-  },
-  chips: { // To change css chips(Selected options)
-	background: "red"
-  },
-  optionContainer: { // To change css for option container 
-	border: "2px solid"
-  },
-  option: { // To change css for dropdown options
-	color: "blue"
-  },
-  groupHeading: { // To chanage group heading style
-
-  }
-}
 function App() {
   const [data, setData] = useState(null)
   const [statsOpen, setStatsOpen] = useState(false);
@@ -67,7 +43,7 @@ function App() {
         onSelect={onSelect} // Function will trigger on select event
         onRemove={onRemove} // Function will trigger on remove event
         displayValue="name" // Property name to display in the dropdown options
-        style={style}
+        // style={style}
       />
       <form style={{top:"0px", right:"0px", margin:"5px", position:"absolute", zIndex:99999}} action="https://www.paypal.com/donate" method="post" target="_top">
         <input type="hidden" name="business" value="E86PQV6YVAE8J" />
