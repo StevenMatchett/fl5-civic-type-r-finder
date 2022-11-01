@@ -2,6 +2,7 @@
   "name": "fl5-finder-next",
   "version": "0.1.0",
   "private": true,
+  "type":"module",
   "scripts": {
     "dev": "next dev",
     "build": "ASSET_URL='/fl5-civic-type-r-finder' next build && next export  && touch ./out/.nojekyll",
@@ -9,7 +10,7 @@
     "start": "next start",
     "lint": "next lint",
     "findCars": "node ../civicTypeRFinder/script.js > src/cars.js",
-    "compileCars": "babel-node writeAllCtrs.js",
+    "compileCars": "node writeAllCtrs.js",
     "update:cars": "yarn findCars && yarn compileCars && yarn deploy"
   },
   "devDependencies": {
