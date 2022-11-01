@@ -2,8 +2,14 @@
 import React, {useState} from 'react';
 import {Map} from './Map';
 import {CivicModal} from './Modal'
+import dynamic from 'next/dynamic';
+// import {StatsModal} from './StatsModal'
+import { Suspense } from 'react'
 import Multiselect from 'multiselect-react-dropdown';
 
+const StatsModal = dynamic(() => import('./StatsModal'), {
+  ssr: false,
+})
 const colors1 = ['Crystal Black Pearl', 'Rallye Red', 'Boost Blue Pearl', 'Championship White', 'Sonic Gray Pearl']
 const colors = colors1.map((color,index)=>{
   return {
@@ -38,6 +44,7 @@ const style = {
 }
 function App() {
   const [data, setData] = useState(null)
+  const [statsOpen, setStatsOpen] = useState(false);
   const [selected, setSelected] = useState(colors);
   const [atDealer, setAtDealer] = useState(true);
   const [atTransit, setAtTransit] = useState(true);
@@ -53,6 +60,7 @@ function App() {
     <>
       <label>In Transit<input type="checkbox" value={atTransit} checked={atTransit} onChange={()=>{setAtTransit(!atTransit)}} /></label>
       <label>At Dealer<input type="checkbox" value={atDealer} checked={atDealer} onChange={()=>{setAtDealer(!atDealer)}} /></label>
+      <button onClick={()=>{setStatsOpen(true)}}>All FL5 colors stats</button>
       <Multiselect
         options={colors} // Options to display in the dropdown
         selectedValues={selected} // Preselected value to persist in dropdown
@@ -70,6 +78,9 @@ function App() {
       </form>
 
       <CivicModal onClose={()=>{setData(null)}} data={data}/>
+      {statsOpen && <Suspense>
+        <StatsModal open={statsOpen} onClose={()=>{setStatsOpen(false)}} />
+      </Suspense>}
       <Map setData={(data)=>{setData(data)}} atDealer={atDealer} atTransit={atTransit} colors={selected} />
     </>
   );
