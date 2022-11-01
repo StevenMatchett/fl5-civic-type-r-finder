@@ -21,7 +21,7 @@ export const CivicModal = (props) => {
       // references are now sync'd and can be accessed.
       subtitle.style.color = '#f00';
     }
-   
+    console.log(props.data)
     if (!props.data){
         return null;
     }
@@ -37,15 +37,15 @@ export const CivicModal = (props) => {
             contentLabel="Example Modal"
           >
    
-            <h2 ref={_subtitle => (subtitle = _subtitle)}></h2>
+            <h2 style={{color:"black"}} ref={_subtitle => (subtitle = _subtitle)}></h2>
             
-            <div><b>Name:</b> {props.data.name}</div>
-            <div><b>Phone:</b> {props.data.phone}</div>
-            <div><b>Color:</b> {props.data.color}</div>
-            <div><b>Status:</b> {props.data.atDealer ? "At dealer" : "Transit"}</div>
-            <div><b>City:</b> {props.data.city}</div>
-            <div><b>State:</b> {props.data.state}</div>
-            <div><b>Vin:</b> {props.data.vin}</div>
+            <div style={{color:"black"}} ><b>Name:</b> {props.data.name}</div>
+            <div style={{color:"black"}} ><b>Phone:</b> {props.data.phone}</div>
+            <div style={{color:"black"}} ><b>Color:</b> {props.data.color}</div>
+            <div style={{color:"black"}} ><b>Status:</b> {props.data.atDealer ? "At dealer" : "Transit"}</div>
+            <div style={{color:"black"}} ><b>City:</b> {props.data.city}</div>
+            <div style={{color:"black"}} ><b>State:</b> {props.data.state}</div>
+            <div style={{color:"black"}} ><b>Vin:</b> {props.data.vin}</div>
             <br />
             <button onClick={props.onClose}>close</button>
            
@@ -53,3 +53,5 @@ export const CivicModal = (props) => {
         </div>
       );
   }
+
+  
