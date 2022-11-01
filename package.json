@@ -7,7 +7,10 @@
     "build": "ASSET_URL='/fl5-civic-type-r-finder' next build && next export  && touch ./out/.nojekyll",
     "deploy": "yarn build && touch ./out/.nojekyll && gh-pages -d out -t true",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "findCars": "node ../civicTypeRFinder/civic.js > src/cars.js",
+    "compileCars": "babel-node writeAllCtrs.js",
+    "update:cars": "yarn findCars && yarn compileCars && yarn deploy"
   },
   "devDependencies": {
     "@koumoul/gh-pages-multi": "^0.7.1",
