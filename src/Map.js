@@ -1,6 +1,6 @@
 import React from 'react'
 import { GoogleMap, LoadScript, Marker, MarkerClusterer } from '@react-google-maps/api';
-import { cars } from './cars';
+import cars from './cars';
 
 
 const containerStyle = {

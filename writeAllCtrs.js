@@ -1,7 +1,7 @@
 // const allCars  = require('./allCTRs.json');
 
-import { cars }  from './src/cars.js';
-import fs from 'fs';
+const cars   = require('./src/cars.js');
+const fs = require('fs');
 let rawdata = fs.readFileSync('./allCTRs.json');
 let allCars = JSON.parse(rawdata);
 

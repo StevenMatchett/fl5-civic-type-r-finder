@@ -2,7 +2,7 @@
   "name": "fl5-finder-next",
   "version": "0.1.0",
   "private": true,
-  "type":"module",
+
   "scripts": {
     "dev": "next dev",
     "build": "ASSET_URL='/fl5-civic-type-r-finder' next build && next export  && touch ./out/.nojekyll",
