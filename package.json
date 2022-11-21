@@ -5,7 +5,7 @@
 
   "scripts": {
     "dev": "next dev",
-    "build": "ASSET_URL='/fl5-civic-type-r-finder' next build && next export  && touch ./out/.nojekyll",
+    "build": "NODE_ENV=production ASSET_URL='/fl5-civic-type-r-finder' next build && NODE_ENV=production  next export  && touch ./out/.nojekyll",
     "deploy": "yarn build && touch ./out/.nojekyll && gh-pages -d out -t true",
     "start": "next start",
     "lint": "next lint",
