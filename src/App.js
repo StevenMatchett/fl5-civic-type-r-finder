@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Map} from './Map';
 import {CivicModal} from './Modal'
 import dynamic from 'next/dynamic';
-// import {StatsModal} from './StatsModal'
+import {lastUpdate} from './time'
 import { Suspense } from 'react'
 import Multiselect from 'multiselect-react-dropdown';
 
@@ -58,6 +58,7 @@ function App() {
         <StatsModal open={statsOpen} onClose={()=>{setStatsOpen(false)}} />
       </Suspense>}
       <Map setData={(data)=>{setData(data)}} atDealer={atDealer} atTransit={atTransit} colors={selected} />
+      <h3 style={{marginLeft:"1rem"}}>Data last refreshed {lastUpdate.toString()}</h3>
     </>
   );
 }

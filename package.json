@@ -11,7 +11,8 @@
     "lint": "next lint",
     "findCars": "node ../civicTypeRFinder/script.js > src/cars.js",
     "compileCars": "node writeAllCtrs.js",
-    "update:cars": "yarn findCars && yarn compileCars && yarn deploy"
+    "writeTime": "node writeTime.js",
+    "update:cars": "yarn findCars && yarn compileCars && yarn writeTime && yarn deploy"
   },
   "devDependencies": {
     "@koumoul/gh-pages-multi": "^0.7.1",
