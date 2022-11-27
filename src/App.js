@@ -24,6 +24,7 @@ function App() {
   const [selected, setSelected] = useState(colors);
   const [atDealer, setAtDealer] = useState(true);
   const [atTransit, setAtTransit] = useState(true);
+  const [twoPlus, setTwoPlus] = useState(false);
 
   const onSelect = (a,b)=>{
     setSelected(a)
@@ -36,6 +37,8 @@ function App() {
     <>
       <label>In Transit<input type="checkbox" value={atTransit} checked={atTransit} onChange={()=>{setAtTransit(!atTransit)}} /></label>
       <label>At Dealer<input type="checkbox" value={atDealer} checked={atDealer} onChange={()=>{setAtDealer(!atDealer)}} /></label>
+      <label>Dealers with 2+<input type="checkbox" value={twoPlus} checked={twoPlus} onChange={()=>{setTwoPlus(!twoPlus)}} /></label>
+
       <button onClick={()=>{setStatsOpen(true)}}>All FL5 colors stats</button>
       <Multiselect
         options={colors} // Options to display in the dropdown
@@ -57,7 +60,7 @@ function App() {
       {statsOpen && <Suspense>
         <StatsModal open={statsOpen} onClose={()=>{setStatsOpen(false)}} />
       </Suspense>}
-      <Map setData={(data)=>{setData(data)}} atDealer={atDealer} atTransit={atTransit} colors={selected} />
+      <Map setData={(data)=>{setData(data)}} atDealer={atDealer} atTransit={atTransit} twoPlus={twoPlus} colors={selected} />
       <h3 style={{marginLeft:"1rem"}}>Data last refreshed {lastUpdate.toString()}</h3>
     </>
   );

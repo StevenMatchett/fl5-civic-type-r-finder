@@ -37,15 +37,21 @@ export const CivicModal = (props) => {
           >
    
             <h2 style={{color:"black"}} ref={_subtitle => (subtitle = _subtitle)}></h2>
-            
-            <div style={{color:"black"}} ><b>Name:</b> {props.data.name}</div>
-            <div style={{color:"black"}} ><b>Phone:</b> {props.data.phone}</div>
-            <div style={{color:"black"}} ><b>Color:</b> {props.data.color}</div>
-            <div style={{color:"black"}} ><b>Status:</b> {props.data.atDealer ? "At dealer" : "Transit"}</div>
-            <div style={{color:"black"}} ><b>City:</b> {props.data.city}</div>
-            <div style={{color:"black"}} ><b>State:</b> {props.data.state}</div>
-            <div style={{color:"black"}} ><b>Vin:</b> {props.data.vin}</div>
-            <br />
+            {props.data.cars && props.data.cars.map((car, index)=>{
+              return ( 
+                <>
+                  <div style={{color:"black"}} ><b>Name:</b> {car.name}</div>
+                  <div style={{color:"black"}} ><b>Phone:</b> {car.phone}</div>
+                  <div style={{color:"black"}} ><b>Color:</b> {car.color}</div>
+                  <div style={{color:"black"}} ><b>Status:</b> {car.atDealer ? "At dealer" : "Transit"}</div>
+                  <div style={{color:"black"}} ><b>City:</b> {car.city}</div>
+                  <div style={{color:"black"}} ><b>State:</b> {car.state}</div>
+                  <div style={{color:"black"}} ><b>Vin:</b> {car.vin}</div>
+                  <br />
+                </>
+              )
+            })}
+           
             <button onClick={props.onClose}>close</button>
            
           </Modal>
