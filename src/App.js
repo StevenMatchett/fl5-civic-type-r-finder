@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic';
 import {lastUpdate} from './time';
 import Multiselect from 'multiselect-react-dropdown';
 import Header from './Header';
+import { TroubleLoading } from './TroubleLoading';
+import {getQueryParams} from './utils/qs';
 
 const StatsModal = dynamic(() => import('./StatsModal'), {
   ssr: false,
@@ -16,13 +18,25 @@ const colorOptions = ['Crystal Black Pearl', 'Rallye Red', 'Boost Blue Pearl', '
 }));
 
 function App() {
+  const queryParams = typeof window !== 'undefined'  ? getQueryParams() : {};
+
+  const defaultSelection = {
+    intTansit: queryParams['at-dealer'] ? false: true,
+    atDealer: queryParams['in-transit'] ? false: true,
+  }
+
   const [data, setData] = useState(null);
   const [statsOpen, setStatsOpen] = useState(false);
+  const [showTroubleLoading, setTroubleLoading] = useState(false);
   const [selectedColors, setSelectedColors] = useState(colorOptions);
-  const [atDealer, setAtDealer] = useState(true);
-  const [atTransit, setAtTransit] = useState(true);
+  const [atDealer, setAtDealer] = useState(defaultSelection.atDealer);
+  const [atTransit, setAtTransit] = useState(defaultSelection.intTansit);
   const [twoPlus, setTwoPlus] = useState(false);
 
+  const toggleTroubleLoading = () => {
+    setTroubleLoading(!showTroubleLoading);
+  }
+  
   const handleColorSelect = (selectedOptions) => {
     setSelectedColors(selectedOptions);
   };
@@ -45,7 +59,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header toggleTroubleLoading={toggleTroubleLoading}/>
       <label class="inline-block mr-4">
       In Transit
       <input
@@ -98,6 +112,13 @@ function App() {
           onClose={() => {setStatsOpen(false)}}
         />
       )}
+
+      {showTroubleLoading && (
+        <TroubleLoading
+          toggleTroubleLoading={toggleTroubleLoading}
+        />
+      )}
+
       <Map
         setData={setData}
         atDealer={atDealer}
