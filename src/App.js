@@ -59,7 +59,7 @@ function App() {
 
   return (
     <>
-      <Header toggleTroubleLoading={toggleTroubleLoading}/>
+      <Header toggleTroubleLoading={toggleTroubleLoading} setStatsOpen={setStatsOpen} />
       <label class="inline-block mr-4">
       In Transit
       <input
@@ -91,10 +91,10 @@ function App() {
       />
     </label>
   
-    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:py-1 sm:px-2 sm:text-sm mt-2 mb-2"
+    {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:py-1 sm:px-2 sm:text-sm mt-2 mb-2"
       onClick={() => {setStatsOpen(true)}}>
       All FL5 colors stats
-    </button>
+    </button> */}
 
 
       <Multiselect
