@@ -37,34 +37,32 @@ const StatsModal = (props) => {
       subtitle.style.color = '#f00';
     }
 
-   
-      return (
-        <div>
-          {/* <button onClick={openModal}>Open Modal</button> */}
-          <Modal
-            isOpen={props.open}
-            onAfterOpen={afterOpenModal}
-            onRequestClose={props.onClose}
-            style={customStyles}
-            contentLabel="Example Modal"
-          >
-   
-            <h2 style={{color:"black"}} ref={_subtitle => (subtitle = _subtitle)}></h2>
-            <div style={{color:"black"}} >Every FL5 that has been shipped and delivered</div>
-            <br />
-            { Object.keys(colors).map(color=>{
-                return (
-                    <div style={{color:"black"}} ><b>{color}:</b> {colors[color]}</div>
-                )
-            })}
-    
-            <div style={{color:"black"}} ><b>Total</b> {ALL}</div>
-            <br />
-            <button onClick={props.onClose}>close</button>
-           
-          </Modal>
-        </div>
-      );
+    return (
+      <>
+        <Modal
+          isOpen={props.open}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={props.onClose}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+  
+          <h2 className="text-black" ref={_subtitle => (subtitle = _subtitle)}></h2>
+          <b><div className="text-black" >Every FL5 that has been shipped and delivered</div></b>
+          <br />
+          { Object.keys(colors).map(color=>{
+              return (
+                  <div className="text-black" ><b>{color}:</b> {colors[color]}</div>
+              )
+          })}
+  
+          <div className="text-black" ><b>Total</b> {ALL}</div>
+          <br />
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:py-1 sm:px-2 sm:text-sm mt-2 mb-2" onClick={props.onClose}>close</button>
+  
+        </Modal>
+      </>
+    );
   }
 
   export default StatsModal;
