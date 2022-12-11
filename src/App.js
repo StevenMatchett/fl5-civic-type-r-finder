@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 import {lastUpdate} from './time';
 import Multiselect from 'multiselect-react-dropdown';
 import Header from './Header';
-import { TroubleLoading } from './TroubleLoading';
 import {getQueryParams} from './utils/qs';
 
 const StatsModal = dynamic(() => import('./StatsModal'), {
@@ -27,15 +26,10 @@ function App() {
 
   const [data, setData] = useState(null);
   const [statsOpen, setStatsOpen] = useState(false);
-  const [showTroubleLoading, setTroubleLoading] = useState(false);
   const [selectedColors, setSelectedColors] = useState(colorOptions);
   const [atDealer, setAtDealer] = useState(defaultSelection.atDealer);
   const [atTransit, setAtTransit] = useState(defaultSelection.intTansit);
   const [twoPlus, setTwoPlus] = useState(false);
-
-  const toggleTroubleLoading = () => {
-    setTroubleLoading(!showTroubleLoading);
-  }
   
   const handleColorSelect = (selectedOptions) => {
     setSelectedColors(selectedOptions);
@@ -59,7 +53,7 @@ function App() {
 
   return (
     <>
-      <Header toggleTroubleLoading={toggleTroubleLoading} setStatsOpen={setStatsOpen} />
+      <Header setStatsOpen={setStatsOpen} />
       <label class="inline-block mr-4">
       In Transit
       <input
@@ -110,12 +104,6 @@ function App() {
         <StatsModal
           open={statsOpen}
           onClose={() => {setStatsOpen(false)}}
-        />
-      )}
-
-      {showTroubleLoading && (
-        <TroubleLoading
-          toggleTroubleLoading={toggleTroubleLoading}
         />
       )}
 

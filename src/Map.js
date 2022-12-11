@@ -98,6 +98,7 @@ export const Map = (props) => {
                   position={marker.location}
                   clickableIcons={true}
                   onClick={() => { setData(marker) }}
+                  noClustererRedraw={true}
                 />
 
               ))
