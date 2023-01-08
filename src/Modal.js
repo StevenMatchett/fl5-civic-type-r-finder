@@ -46,6 +46,7 @@ export const CivicModal = (props) => {
                 <div style={{color:"black"}} ><b>City:</b> {car.city}</div>
                 <div style={{color:"black"}} ><b>State:</b> {car.state}</div>
                 <div style={{color:"black"}} ><b>Vin:</b> {car.vin}</div>
+                { car.url && <div style={{color:"black"}} ><b>Url:</b> {car.url}</div>}
                 <br />
               </>
             )
