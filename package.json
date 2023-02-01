@@ -6,13 +6,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "NODE_ENV=production ASSET_URL='/fl5-civic-type-r-finder' next build && NODE_ENV=production  next export  && touch ./out/.nojekyll",
-    "deploy": "yarn build && touch ./out/.nojekyll && gh-pages -d out -t true",
+    "deploy": "npm run  build && touch ./out/.nojekyll && gh-pages -d out -t true",
     "start": "next start",
     "lint": "next lint",
     "findCars": "node ../civicTypeRFinder/script.js > src/cars.js",
     "compileCars": "node writeAllCtrs.js",
     "writeTime": "node writeTime.js",
-    "update:cars": "yarn findCars && yarn compileCars && yarn writeTime && yarn deploy"
+    "update:cars": "npm run findCars && npm run compileCars && npm run writeTime && npm run  deploy"
   },
   "devDependencies": {
     "@koumoul/gh-pages-multi": "^0.7.1",
