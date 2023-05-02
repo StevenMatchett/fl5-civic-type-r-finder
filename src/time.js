@@ -1,1 +1,1 @@
-export const lastUpdate = new Date("2023-05-01T20:24:57.827Z")
+export const lastUpdate = new Date("2023-05-02T14:07:49.679Z")
